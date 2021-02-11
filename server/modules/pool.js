@@ -1,9 +1,5 @@
 const pg = require('pg');
 
-
-const pool = new pg.Pool({
-  database: 'koala_holla',
-
 const config = {
   database: 'koala_holla',
   host: 'localhost',
@@ -20,7 +16,6 @@ pool.on('connect', () => {
 
 pool.on('error', (err) => {
   console.log('error connecting to postgres', err);
-
 });
 
 module.exports = pool;

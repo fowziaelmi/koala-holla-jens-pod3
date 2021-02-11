@@ -15,13 +15,4 @@
     "express": "^4.17.1",
     "pg": "^8.5.1"
   }
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fowziaelmi/koala-holla-jens-pod3.git"
-  },
-  "bugs": {
-    "url": "https://github.com/fowziaelmi/koala-holla-jens-pod3/issues"
-  },
-  "homepage": "https://github.com/fowziaelmi/koala-holla-jens-pod3#readme"
-}
+  }
