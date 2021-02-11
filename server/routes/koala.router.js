@@ -20,7 +20,7 @@ koalaRouter.get('/', (req, res) => {
 
 // POST
 koalaRouter.post('/', (req, res) => {
-  let sqlText = `INSERT INTO "koalas" ("name", "age", "gender", "ready_for_transfer", "notes")`;
+  let sqlText = `INSERT INTO "koalas" ("name", "age", "gender", "ready_for_transfer", "notes") VALUES($1, $2, $3, $4, $5)`;
   let sqlArgs = [
     req.body.name,
     req.body.age,
