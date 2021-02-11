@@ -35,12 +35,12 @@ function getKoalas() {
   }).then(function (response) {
     console.log('GET response', response);
     for (let i = 0; i < response.length; i++) {
-      $('#viewkoalas').append(`
+      $('#viewKoalas').append(`
         <tr>
           <td>${response[i].name}</td>
           <td>${response[i].age}</td>
           <td>${response[i].gender}</td>
-          <td>${response[i].ready_to_transfer}</td>
+          <td>${response[i].ready_for_transfer}</td>
           <td>${response[i].notes}</td>
         </tr>
       `);
