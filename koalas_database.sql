@@ -17,3 +17,4 @@ VALUES
 ('Logan', 'M', 15, FALSE, 'Loves to sauna'),
 ('Charlie', 'M', 9, TRUE, 'Favorite band is Nirvana'),
 ('Betsy', 'F', 4, TRUE, 'Has a pet iguana');
+
