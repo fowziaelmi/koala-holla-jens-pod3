@@ -8,11 +8,11 @@ CREATE TABLE "koalas" (
   	"notes" VARCHAR (1024)
   	);
 
--- INSERT INTO information for koala database provided
+-- INSERT INTO informationf for koala database provided
 INSERT INTO "koalas" ("name","gender","age","ready_for_transfer","notes")
-VALUES ('Scotty','M','4','Y','Born in Guatemala'),
-('Jean','F','5','Y','Allergic to lots of lava'),
-('Ororo','F','7','n','Loves listening to Paula (Abdul)'),
-('Logan','M','15','N','Loves to sauna'),
-('Charlie','M','9','Y','Favorite band is Nirvana'),
-('Betsy','F','4','Y','Has a pet iguana')
+VALUES ('Scotty','M','4',TRUE,'Born in Guatemala'),
+('Jean','F','5',TRUE,'Allergic to lots of lava'),
+('Ororo','F','7',FALSE,'Loves listening to Paula (Abdul)'),
+('Logan','M','15',FALSE,'Loves to sauna'),
+('Charlie','M','9',TRUE,'Favorite band is Nirvana'),
+('Betsy','F','4',TRUE,'Has a pet iguana')
