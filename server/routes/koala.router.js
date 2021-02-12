@@ -45,7 +45,7 @@ koalaRouter.put('/readyForTransfer/:id', (req, res) => {
   console.log(req.body);
 
   let koalaId = req.params.id;
-  let newValue = req.body.read;
+  // let newValue = req.body.read;
 
   let sqlText = `UPDATE "koalas" SET "ready_for_transfer" = 'TRUE' WHERE "id"=$1`;
 
