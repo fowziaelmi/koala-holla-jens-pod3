@@ -22,9 +22,8 @@ function onTransfer(koalaId) {
   })
     .then((res) => {
       console.log(res);
-      getKoalas();
     })
-    .cath((err) => console.error(err));
+    .catch((err) => console.error(err));
 }
 
 function onClick() {
@@ -64,7 +63,15 @@ function getKoalas() {
           <td>${response[i].gender}</td>
           <td>${response[i].ready_for_transfer}</td>
           <td>${response[i].notes}</td>
-          <td><button class="btn-transfer" data-id="${response[i].id}">Ready for transfer</button></td>
+          ${
+            response[i].ready_for_transfer === false
+              ? `<td>
+                <button class="btn-transfer" data-id="${response[i].id}">
+                  Ready for transfer
+                </button>
+              </td>`
+              : `<td>ready to transfer</td>`
+          }
         </tr>
       `);
     }
