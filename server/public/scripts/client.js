@@ -7,6 +7,7 @@ $(document).ready(function () {
   // load existing koalas on page load
   getKoalas();
   $(document).on('click', '.btn-transfer', onClick);
+  $('#viewKoalas').on('click', '.delete-koala', deleteKoala);
 }); // end doc ready
 
 function onTransfer(koalaId) {
@@ -75,7 +76,11 @@ function getKoalas() {
                 </button>
               </td>`
               : `<td>ready to transfer</td>`
-          }
+          } <td>
+          <button class="delete-koala" data-id="${
+            response[i].id
+          }">Delete</button>
+      </td>
         </tr>
       `);
     }
@@ -84,6 +89,7 @@ function getKoalas() {
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
+
   // ajax call to server to get koalas
   $.ajax({
     method: 'POST',
@@ -98,4 +104,24 @@ function saveKoala(newKoala) {
     $('#notesIn').val('');
     getKoalas();
   });
+}
+
+//Delete Endpoint
+
+function deleteKoala() {
+  onDelete($(this).data('id'));
+}
+function onDelete(koalaId) {
+  console.log('in on delete');
+  $.ajax({
+    method: 'DELETE',
+    url: `koalas/${koalaId}`,
+  })
+    .then(function (response) {
+      $('#viewKoalas').empty();
+      getKoalas();
+    })
+    .catch(function (error) {
+      alert('Error on deleting koalas.', error);
+    });
 }
