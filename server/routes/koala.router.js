@@ -40,7 +40,7 @@ koalaRouter.post('/', (req, res) => {
 });
 
 // PUT
-koalaRouter.put('/:id', (req, res) => {
+koalaRouter.put('/readyForTransfer/:id', (req, res) => {
   console.log(req.params.id);
   console.log(req.body);
 
