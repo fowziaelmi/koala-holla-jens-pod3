@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+header {
+  background-color: rgb(38, 114, 230);
+  padding: 2rem;
+}
+
+.icon {
+  width: 200px;
+  height: 200px;
+}
+
+main {
+  padding: 2rem;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+
