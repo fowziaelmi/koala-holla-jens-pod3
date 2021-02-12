@@ -22,13 +22,15 @@ function onTransfer(koalaId) {
   })
     .then((res) => {
       console.log(res);
+      $('#viewKoalas').empty();
       getKoalas();
     })
-    .cath((err) => console.error(err));
+    .catch((err) => console.error(err));
 }
 
 function onClick() {
   let koalaId = $(this).data('id');
+
   onTransfer(koalaId);
 }
 
@@ -40,9 +42,10 @@ function setupClickListeners() {
       name: $('#nameIn').val(),
       age: $('#ageIn').val(),
       gender: $('#genderIn').val(),
-      readyForTransfer: $('#readyForTransferIn').val(),
+      ready_for_transfer: $('#readyForTransferIn').val(),
       notes: $('#notesIn').val(),
     };
+    console.log($('#readyForTransferIn').val());
     // call saveKoala with the new object
     saveKoala(koalaToSend);
   });
@@ -64,7 +67,15 @@ function getKoalas() {
           <td>${response[i].gender}</td>
           <td>${response[i].ready_for_transfer}</td>
           <td>${response[i].notes}</td>
-          <td><button class="btn-transfer" data-id="${response[i].id}">Ready for transfer</button></td>
+          ${
+            response[i].ready_for_transfer === false
+              ? `<td>
+                <button class="btn-transfer" data-id="${response[i].id}">
+                  Ready for transfer
+                </button>
+              </td>`
+              : `<td>ready to transfer</td>`
+          }
         </tr>
       `);
     }
@@ -73,13 +84,13 @@ function getKoalas() {
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
-  $('#viewKoalas').empty();
   // ajax call to server to get koalas
   $.ajax({
     method: 'POST',
     url: '/koalas',
     data: newKoala,
   }).then(function (response) {
+    $('#viewKoalas').empty();
     $('#nameIn').val('');
     $('#ageIn').val('');
     $('#genderIn').val('');
