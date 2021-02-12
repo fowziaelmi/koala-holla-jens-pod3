@@ -22,12 +22,15 @@ function onTransfer(koalaId) {
   })
     .then((res) => {
       console.log(res);
+      $('#viewKoalas').empty();
+      getKoalas();
     })
     .catch((err) => console.error(err));
 }
 
 function onClick() {
   let koalaId = $(this).data('id');
+
   onTransfer(koalaId);
 }
 
@@ -39,7 +42,7 @@ function setupClickListeners() {
       name: $('#nameIn').val(),
       age: $('#ageIn').val(),
       gender: $('#genderIn').val(),
-      readyForTransfer: $('#readyForTransferIn').val(),
+      ready_for_transfer: $('#readyForTransferIn').val(),
       notes: $('#notesIn').val(),
     };
     // call saveKoala with the new object
@@ -80,18 +83,18 @@ function getKoalas() {
 
 function saveKoala(newKoala) {
   console.log('in saveKoala', newKoala);
-  $('#viewKoalas').empty();
   // ajax call to server to get koalas
   $.ajax({
     method: 'POST',
     url: '/koalas',
     data: newKoala,
   }).then(function (response) {
-    getKoalas();
+    $('#viewKoalas').empty();
     $('#nameIn').val('');
     $('#ageIn').val('');
     $('#genderIn').val('');
     $('#readyForTransferIn').val('');
     $('#notesIn').val('');
+    getKoalas();
   });
 }
