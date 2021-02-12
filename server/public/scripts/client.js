@@ -22,6 +22,8 @@ function onTransfer(koalaId) {
   })
     .then((res) => {
       console.log(res);
+      $('#viewKoalas').empty();
+      getKoalas();
     })
     .catch((err) => console.error(err));
 }
@@ -42,6 +44,7 @@ function setupClickListeners() {
       readyForTransfer: $('#readyForTransferIn').val(),
       notes: $('#notesIn').val(),
     };
+    console.log($('#readyForTransferIn').val());
     // call saveKoala with the new object
     saveKoala(koalaToSend);
   });
