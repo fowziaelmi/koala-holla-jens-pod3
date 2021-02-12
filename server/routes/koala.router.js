@@ -43,4 +43,4 @@ koalaRouter.post('/', (req, res) => {
 
 // DELETE
 
-module.exports = router;
+module.exports = koalaRouter;
