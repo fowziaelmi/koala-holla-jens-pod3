@@ -6,7 +6,31 @@ $(document).ready(function () {
   setupClickListeners();
   // load existing koalas on page load
   getKoalas();
+  $(document).on('click', '.btn-transfer', onClick);
 }); // end doc ready
+
+function onTransfer(koalaId) {
+  // console.log('transfer btn clicked');
+  // console.log($(this).data('id'));
+
+  $.ajax({
+    method: 'PUT',
+    url: `/koalas/readyForTransfer/${koalaId}`,
+    data: {
+      koalaId,
+    },
+  })
+    .then((res) => {
+      console.log(res);
+      getKoalas();
+    })
+    .cath((err) => console.error(err));
+}
+
+function onClick() {
+  let koalaId = $(this).data('id');
+  onTransfer(koalaId);
+}
 
 function setupClickListeners() {
   $('#addButton').on('click', function () {
@@ -40,7 +64,7 @@ function getKoalas() {
           <td>${response[i].gender}</td>
           <td>${response[i].ready_for_transfer}</td>
           <td>${response[i].notes}</td>
-          <td><button>Ready for transfer</button></td>
+          <td><button class="btn-transfer" data-id="${response[i].id}">Ready for transfer</button></td>
         </tr>
       `);
     }
