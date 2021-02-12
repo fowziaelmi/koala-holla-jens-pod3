@@ -22,9 +22,8 @@ function onTransfer(koalaId) {
   })
     .then((res) => {
       console.log(res);
-      getKoalas();
     })
-    .cath((err) => console.error(err));
+    .catch((err) => console.error(err));
 }
 
 function onClick() {
@@ -80,11 +79,11 @@ function saveKoala(newKoala) {
     url: '/koalas',
     data: newKoala,
   }).then(function (response) {
+    getKoalas();
     $('#nameIn').val('');
     $('#ageIn').val('');
     $('#genderIn').val('');
     $('#readyForTransferIn').val('');
     $('#notesIn').val('');
-    getKoalas();
   });
 }
